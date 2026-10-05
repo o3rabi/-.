@@ -1,0 +1,25 @@
+{
+  "rules": {
+    ".read": false,
+    ".write": false,
+    "rx": {
+      "$k": {
+        ".read": true,
+        ".write": true,
+        "$f": {
+          ".validate": "($f === 'up' || $f === 'down' || $f === 're') && newData.isNumber() && newData.val() >= 0 && newData.val() <= (data.exists() ? data.val() : 0) + 1 && newData.val() >= (data.exists() ? data.val() : 0) - 1"
+        }
+      }
+    },
+    "cm": {
+      "$k": {
+        ".read": true,
+        "$id": {
+          ".write": "!data.exists() && newData.exists()",
+          ".validate": "newData.hasChildren(['t', 'd']) && newData.child('t').isString() && newData.child('t').val().length > 0 && newData.child('t').val().length <= 300 && newData.child('d').isNumber() && (!newData.hasChild('n') || (newData.child('n').isString() && newData.child('n').val().length <= 30))",
+          "$other": { ".validate": "$other === 'n' || $other === 't' || $other === 'd'" }
+        }
+      }
+    }
+  }
+}
