@@ -1,0 +1,18 @@
+تشغيل اللايك والكومنت والريبوست للكل (مرة واحدة بس)
+====================================================
+
+1) ادخل https://console.firebase.google.com واعمل Add project (اقفل Google Analytics).
+2) من القائمة: Build ← Realtime Database ← Create Database ← اختار أي منطقة ← Start in locked mode.
+3) تبويب Rules: امسح اللي موجود والصق محتوى ملف firebase-rules.json كله ← Publish.
+4) تبويب Data: انسخ الرابط اللي فوق، شكله:
+   https://اسم-مشروعك-default-rtdb.firebaseio.com
+5) افتح index.html بأي محرر نصوص (زي VS Code) وابحث عن:
+   window.OA_DB = "";
+   وحط الرابط بين العلامتين:
+   window.OA_DB = "https://اسم-مشروعك-default-rtdb.firebaseio.com";
+6) ارفع index.html على GitHub بدل القديم.
+
+ملاحظات:
+- لو سيبت OA_DB فاضي الموقع بيشتغل زي الأول (التفاعل محلي لكل زائر).
+- مسح تعليق مش مناسب: من تبويب Data في Firebase امسحه يدويًا.
+- التفاعلات مربوطة بعنوان العمل (العنوان + الوصف تحته). لو غيّرت نصهم، عدادات العمل ده هتبدأ من الصفر.
